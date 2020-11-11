@@ -16,6 +16,8 @@ spec:
       containers:
       - name: nodeapi
         image: nodejs-api:latest
+      imagePullSecrets:
+      - name: docker-registry-secret
 ---
 apiVersion: v1
 kind: Service
@@ -29,12 +31,15 @@ spec:
   ports:
   - port: 80
     targetPort: 8000
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nodeapi
 spec:
-   maxReplicas: 2
-   minReplicas: 2
-   scaleTargetRef:
-   apiVersion: apps/v1
-   kind: Deployment
-   name: hpa-name
-   targetCPUUtilizationPercentage: 80
-
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nodeapi
+  minReplicas: 2
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 80
