@@ -11,11 +11,17 @@ build the docker
 run the docker 
 # nodeapi running on kubernetes(minikube)
 1.minikube install
+
 2.curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
 3.sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
 4.yum install conntrack(necessary for minikube)
+
 5.minikube start --driver=none
+
 6.export PATH=/usr/local/bin:$PATH
+
 7.export KUBECONFIG=/usr/local/bin/kubectl
 
 # kubernetes deployment
