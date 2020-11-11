@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-servers
+  namespace: api-servers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeapi
+  template:
+    metadata:
+      labels:
+        app: nodeapi
+    spec:
+      containers:
+      - name: nodeapi
+        image: nodejs-api:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeapi
+  namespace: api-servers
+spec:
+  type: NodePort
+  selector:
+    app: nodeapi
+  ports:
+  - port: 80
+    targetPort: 8000
