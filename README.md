@@ -2,15 +2,14 @@
 Hardware: 8GBRAM-4CPU-50GB(VM)
 Software: Dockerengine,minikube,conntrack(for minikube)
 
-#nodeapi running on docker
+# nodeapi running on docker
 I want to be sure that the nodejs-api work,so i build it on a docker
 create a package.json
 create a server.js
 create a Dockerfile
 build the docker
 run the docker 
-go to the browser
-#nodeapi running on kubernetes(minikube)
+# nodeapi running on kubernetes(minikube)
 1.minikube install
 2.curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 3.sudo install minikube-linux-amd64 /usr/local/bin/minikube
