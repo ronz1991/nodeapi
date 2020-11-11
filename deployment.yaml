@@ -4,7 +4,6 @@ metadata:
   name: api-servers
   namespace: api-servers
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: nodeapi
