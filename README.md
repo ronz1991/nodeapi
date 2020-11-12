@@ -48,10 +48,12 @@ I want to be sure that the nodejs-api work,so i build it on a docker
 3. Choose the default Plugins 
 
 # Jenkinsfile
-1. I assumed that your aren't running on the master and you have a 'slave' for Jenkins builds.
+1. I assumed that you aren't running on the master and you have a 'slave' for Jenkins builds.
 
 2. I assumed that you have a secret for project and builds for connecting to the kubernetes through the plugin.
 
 3. I didnt use kubernetes plugin! 
+
+4. Please add the parameters of the kubernetes cluster config.
 
 
