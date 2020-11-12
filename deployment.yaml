@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-servers
+  name: nodeapi
   namespace: api-servers
 spec:
   selector:
     matchLabels:
-      app: nodeapi
+      app: nodeapi   
   template:
     metadata:
       labels:
@@ -35,11 +35,12 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: nodeapi
+  namespace: api-servers
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: nodeapi
   minReplicas: 2
-  maxReplicas: 2
+  maxReplicas: 4
   targetCPUUtilizationPercentage: 80
