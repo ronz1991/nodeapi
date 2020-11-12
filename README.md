@@ -35,6 +35,8 @@ I want to be sure that the nodejs-api work,so i build it on a docker
 
 2.create a yaml with all the deployment config : 'touch deployment.yaml'
 
+3.apply the deployment : 'kubectl apply -f deployment.yaml'
+
 # Jenkinsfile
 1.I assumed that your aren't running on the master and you have a 'slave' for Jenkins builds.
 
