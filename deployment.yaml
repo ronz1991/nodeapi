@@ -24,7 +24,7 @@ metadata:
   name: nodeapi
   namespace: api-servers
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: nodeapi
   ports:
