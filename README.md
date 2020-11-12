@@ -37,6 +37,8 @@ I want to be sure that the nodejs-api work,so i build it on a docker
 
 3.apply the deployment : 'kubectl apply -f deployment.yaml'
 
+4.I assumed that you have an LoadBalancer otherwise you need to use 'NodePort' parameter in the 'Service' Kind deployment.
+
 # Jenkinsfile
 1.I assumed that your aren't running on the master and you have a 'slave' for Jenkins builds.
 
