@@ -15,7 +15,8 @@ spec:
       containers:
       - name: nodeapi
         image: nodejs-api:latest
-        imagePullPolicy: Never
+        imagePullSecrets:
+        - name: docker-registry-secret
 ---
 apiVersion: v1
 kind: Service
