@@ -4,7 +4,7 @@ kubeconfigfile = """
 apiVersion: v1
 clusters:
 - cluster:
-    certificate-authority: /root/.minikube/ca.crt
+    certificate-authority: ./ca.crt
     server: https://x.x.x.x:8443
   name: minikube
 contexts:
@@ -18,21 +18,31 @@ preferences: {}
 users:
 - name: minikube
   user:
-    client-certificate: /root/.minikube/profiles/minikube/client.crt
-    client-key: /root/.minikube/profiles/minikube/client.key
+    client-certificate: ./client.crt
+    client-key: ./client.key
 """
-node(){
-      # if configured in scm plugin
-      checkout scm
+node() {
+    
+        // cleanning workspace
+        sh('rm * -rf')
+        
+      // if configured in scm plugin
+      // checkout scm
+
+      // if not configured scm plugin
       
-      #if not configured scm plugin
       sh('git clone http://github.com/ronz1991/nodeapi.git')
-      
-      writefile files 'config',text:configfile
+      // 
+      writeFile file: 'config', text: kubeconfigfile
+      writeFile file: 'client.crt', text: clientcertfile
+      writeFile file: 'client.key', text: clientkeyfile
+      writeFile file: 'ca.crt', text: cacertfile
+      // writefile files 'config', text: configfile
       
       dir('nodeapi')
       {
-          sh('cat' README.md')
-          sh('kubectl get --configfile=$(PWD)/config')
+          sh('cat README.md')
+          sh('kubectl --kubeconfig=../config get all')
+          sh('kubectl --kubeconfig=../config apply -f deployment.yaml')
       }
  }
